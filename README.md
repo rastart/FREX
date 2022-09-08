@@ -21,7 +21,10 @@ FEATURES
 
 
 INTRO
+https://youtu.be/kJwwgIXG1bQ
 
+EXAMPLES (BLEND FILE)
+https://blenderartists.org/uploads/short-url/r65qOBwELDkhN8Hfnihn3azRRXQ.blend
 
 TUTORIAL (older version v0.4)
 https://youtu.be/DWg-qUnQsK0
