@@ -19,6 +19,8 @@ FEATURES
 - it's also provided a sverchok node lite implementation of the engine
 - grease pencil compatibility
 
+blender artist page link
+https://blenderartists.org/t/frex-fractal-extruder
 
 INTRO
 https://youtu.be/kJwwgIXG1bQ
