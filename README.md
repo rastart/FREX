@@ -17,7 +17,7 @@ FEATURES
 - extra grammar features
 - it can generate data to use in geometry node 
 - it's also provided a sverchok node lite implementation of the engine
-- grease pencile compatibility
+- grease pencil compatibility
 
 
 INTRO
