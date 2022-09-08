@@ -1,0 +1,123 @@
+___________________________
+| BASIC GROW 
+
+F or G is grow forward
+H is grow profile length based 
+P is grow along path
+numbers from 2 to 9 to generate a particle point assigned to this index
+K is to assing a layer index value incremented every "K" iteration in the drawing process
+
+__________________________
+| RULE EDITING
+Rn_... is to repeat a chunk of rule grammar R to n times, use a space to break the chunks
+ex: R150_FA R10_FB R2_FC  it means split the rule into 3 pieces and rewrite it according repetition numbers
+m is to get the incremental value 
+ex R3_[+!#m*10!F] it will produce [+!#0*10!F][+!#1*10!F][+!#2*10!F]
+
+__________________________
+| GLOBAL PARAMETERS
+
+K is a global variable +1 incremented every K iteration (default=1)
+n is the local branch iteration increment
+i is the global iteration increment
+LEN is current global length
+r is current global radius
+
+g is the operator's "g_val" global float parameter
+j is the operator's "j_val" global float parameter
+k is the operator's "k_val" global float parameter
+w is the operator's "w_val" global float parameter
+___________________________
+| TURTLE COMMANDS
+
+K is to keframe iteration  (K+=1)
+
+S is scale (radius & length)
+s is scale inverted (radius & length)
+
+T is scale (only radius)
+t is scale inverted  (only radius)
+
+L is scale (only length)
+l is scale inverted (only length)
+
+-> ROTATIONS
+& or ^ is +X or -X
++ or - is +Y or -Y
+\ or / is +Z or -Z 
+
+| is turn Y 180° 
+
+o is to 'random' invert parameter
+ex: 'o&' 
+
+p is a key to rotate by path grow
+ex: 'p&' 
+
+[...] is to encapsulate a branch
+
+___________________________
+| INJECT PARAMETER EXAMPLES
+
+!x! is set fixed parameter
+?x;x? is for random parameter
+!#eval! is for inject a python eval expression
+
+ex. F!11! is grow by 11 meters
+ex. +!11! is rotate +Y by 11 degrees 
+ex. F?-11;11? is grow random from -11 to 11 meters
+ex. +?-11;11? is turn random from -11 to 11 degrees
+ex. !#sin(n)*10! 
+___________________________
+| STOCHASTICS & GROWING CONDITION
+
+%'tag'...% is used to encapsulate event according to choosen tag
+
+-> TAGS
+
+= generate a single event at specific generation level
+> same up but generate an event UNTIL
+< same up but generate an event SINCE 
+
+° is for probabilistic generation of events (1% to 100%)
+ex. %50°[+F]% it will branch every generation with 50% of probability
+
+@ is the fallback event everytime the first doesn't
+
+ex. %10>[+F]@[-F]% it keep generating [-F] after the 10th gen
+$ is a single time fallback event generated at first condition end
+ex. %10>[+F]$[-F]% it generate a single [-F] after the 10th gen
+___________________________
+| GROWING LIMIT
+
+x{...} encapsulate a rule (whole) to limit the max rewritings by x
+ex. A : 11{[+FA]} 
+
+
+##############################################
+#################### TEXTURE MODE EXTRA SINTAX
+
+!!!!!!!!!!!!! UNDER DEVELOPMENT !!!!!!!!!!!!!
+
+V tag set pixel color followed by the pixel math operator =+-*
+
+= is to set fixed color
++ is to add/subtract color each iteration
+- is to subtract color each iteration
+* is to multiply color each iteration
+n is to multiply color each branch local iteration ( can use * extra operator)
+
+color sintax examples:
+
+V=r,g,b,a; the rgba values are in float from 0 to 1
+
+V+0.1,0.1,0.1,1; add 0.1 to each channel each iteration
+
+1 2 3 4 are the short form to set the color by the operator's color samples
+
+ex: V=1; 
+ex: Vn1*0.1; 
+
+
+
+ 
