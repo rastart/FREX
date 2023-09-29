@@ -42,7 +42,7 @@ class FREX_OT_fractal_extruder(bpy.types.Operator):
     max_len : FloatProperty(name="MAX LENGTH +", default=0,min=0)
     iterations : IntProperty(name="iterations", default=3, min=1)
     prof_x : FloatProperty(name="prof_x", default=1, min=0.01)
-
+    RandSeed : IntProperty(name="SEED", default=0, min=0)
     #custom_input : FloatProperty(name="k_val", default=30.0)
     custom_input : FloatVectorProperty(name="g j k w", size=4, default = [1,1,1,1])
     
@@ -72,6 +72,7 @@ class FREX_OT_fractal_extruder(bpy.types.Operator):
         row = box.row()
         row.prop(self, "iterations")
         row.prop(self, "update")
+        row.prop(self,"RandSeed")
         box.prop(self, "angle")
         box.prop(self, "length")
         box.prop(self, "scale")
@@ -236,7 +237,8 @@ class FREX_OT_fractal_extruder(bpy.types.Operator):
             self.rule_1,self.rule_2,self.rule_3,self.rule_4,
             self.angle, self.length,self.scale, self.radius_scale, 
             self.min_angle, self.max_angle, self.min_len, self.max_len, 
-            self.iterations, self.area, self.prof_x, self.multi, self.custom_input, invoked)
+            self.iterations, self.area, self.prof_x, self.multi, 
+            self.custom_input, invoked, self.RandSeed)
 
 
     def multi_action(self, context, get_roots, invoked):
@@ -311,4 +313,5 @@ class FREX_OT_fractal_extruder(bpy.types.Operator):
                 self.rule_1,self.rule_2,self.rule_3,self.rule_4,
                 self.angle, self.length,self.scale, self.radius_scale, 
                 self.min_angle, self.max_angle, self.min_len, self.max_len, 
-                self.iterations, self.area, self.prof_x, self.multi, self.custom_input, invoked)
+                self.iterations, self.area, self.prof_x, self.multi, 
+                self.custom_input, invoked, self.RandSeed)

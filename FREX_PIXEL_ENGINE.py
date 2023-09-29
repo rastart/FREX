@@ -4,6 +4,7 @@ import bpy
 import bmesh
 
 from mathutils import Vector, Matrix
+import random
 from random import randrange, uniform, getrandbits, choice
 from . FREX_UTILS import Cursor
 from . utils_profile import GetCurveProf, BWProfManager
@@ -17,9 +18,10 @@ def FRACTALEX(
     min_angle, max_angle, min_len, max_len, 
     iterations, area, prof_x, multi, custom_input, invoked,
     imageName, blur, img_settings, caps, C1,C2,C3,C4,
-    resize, OPT ):
+    resize, OPT, RandSeed ):
 
     print('FREX ENGINE START')
+    random.seed(RandSeed)
 
     renderSequence = True if 'P' in OPT else False
         

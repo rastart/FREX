@@ -4,6 +4,7 @@ import bpy
 import bmesh
 
 from mathutils import Vector, Matrix
+import random
 from random import randrange, uniform, getrandbits, choice
 from . FREX_UTILS import Cursor
 from . utils_profile import GetCurveProf, BWProfManager
@@ -14,10 +15,10 @@ def FRACTALEX(
     ROOT, axiom, extra_rules, rule_1, rule_2, rule_3, rule_4,  
     a, L, scale, radius_scale, 
     min_angle, max_angle, min_len, max_len, 
-    iterations, area, prof_x, multi, custom_input, invoked):
+    iterations, area, prof_x, multi, custom_input, invoked, RandSeed):
 
     print('FREX ENGINE START')
-
+    random.seed(RandSeed)
     #_______
     #GLOBALS
     index_deepnes = 0 #GLOBAL OVERRIDE FOR BRANCH DEEPNES

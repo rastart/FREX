@@ -44,6 +44,7 @@ class FREX_OT_fractal_painter(bpy.types.Operator):
     max_len : FloatProperty(name="MAX LENGTH +", default=0,min=0)
     iterations : IntProperty(name="iterations", default=3, min=1)
     prof_x : FloatProperty(name="prof_x", default=1, min=0.01)
+    RandSeed : IntProperty(name="SEED", default=0, min=0)
     
     image_settings : IntVectorProperty(name="W H x y", size=4, default = [1024,1024,512,512])
     blur : IntProperty(name="blur", default=0, min=0)
@@ -105,11 +106,14 @@ class FREX_OT_fractal_painter(bpy.types.Operator):
         #box = layout.box()
         row = box.row()
         row.prop(self, "update", text="AUTO_UPDATE")
-        row.prop(self, "resize", text="scale X")
+        row.prop(self, "resize", text="scale res")
+        
         row = box.row()
         row.prop(self, "image_settings")
-        box.prop(self, "blur")
-        box.prop(self, "caps")
+        row = box.row()
+        row.prop(self, "blur")
+        row.prop(self, "caps")
+        row.prop(self,"RandSeed")
         row = box.row()
         row.prop(self, "C1")
         row.prop(self, "C2")
@@ -294,7 +298,7 @@ class FREX_OT_fractal_painter(bpy.types.Operator):
                 self.iterations, self.area, self.prof_x, self.multi, self.custom_input, invoked,
                 self.imageName, self.blur, self.image_settings, self.caps,
                 self.C1,self.C2,self.C3,self.C4,
-                self.resize, self.OPT )
+                self.resize, self.OPT, self.RandSeed )
 
 
     def multiAction(self, context, invoked):
@@ -311,6 +315,6 @@ class FREX_OT_fractal_painter(bpy.types.Operator):
                 i+1, self.area, self.prof_x, self.multi, self.custom_input, invoked,
                 self.imageName, self.blur, self.image_settings, self.caps,
                 self.C1,self.C2,self.C3,self.C4,
-                self.resize, self.OPT )
+                self.resize, self.OPT, self.RandSeed )
             
             ROOT += 1
